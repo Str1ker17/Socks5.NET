@@ -2,4 +2,12 @@
 
 A tiny library to operate connections using SOCKS5 proxy.
 
-Currently, only TCP CONNECT is fully implemented, but others are under heavy developement.
+Supported methods:
+* TCP CONNECT
+* TCP Port Map
+* UDP Assoc
+
+Supported auth types:
+* None
+* Username/password
+

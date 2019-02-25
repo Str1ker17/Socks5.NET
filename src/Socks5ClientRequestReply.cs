@@ -50,7 +50,8 @@ namespace A2S.Socks5 {
                     throw new ArgumentOutOfRangeException();
             }
 
-            this.RemoteLocalPort = BitConverter.ToUInt16(data, 4 + addr_len);
+            this.RemoteLocalPort = (ushort)IPAddress.NetworkToHostOrder(
+                (short)(BitConverter.ToUInt16(data, 4 + addr_len)));
         }
 
         public override byte[] GetBytes() {
@@ -100,6 +101,10 @@ namespace A2S.Socks5 {
                 , 0, data, position, 2);
 
             return data;
+        }
+
+        public override string ToString() {
+            return String.Format("{0}:{1} - {2}", RemoteLocalAddress, RemoteLocalPort, ResponseCode);
         }
     }
 }
